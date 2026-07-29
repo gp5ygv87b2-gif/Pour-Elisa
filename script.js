@@ -1,121 +1,112 @@
 const intro = document.getElementById("intro");
 const envelope = document.getElementById("envelope");
 const question = document.getElementById("question");
+const loveScreen = document.getElementById("loveScreen");
+const finalScreen = document.getElementById("finalScreen");
 
 const openLetter = document.getElementById("openLetter");
 
 const no1 = document.getElementById("no1");
 const no2 = document.getElementById("no2");
-constconst message = document.getElementById("message");
+const yes = document.getElementById("yes");
+
+const message = document.getElementById("message");
+
+const texts = [
+    "(Mos provo me thonë jo 😏)",
+    "Qyqy ec more 😂",
+    "Jaaa ja kajte nanen 😭",
+    "Mos ja tepro qitash 😭😅",
+    "Eee qitash ski qare 😂"
+];
 
 let count = 0;
 
 setTimeout(() => {
-
     intro.classList.add("hidden");
     envelope.classList.remove("hidden");
+}, 2500);
 
-},3000);
-
-openLetter.addEventListener("click",()=>{
+openLetter.addEventListener("click", () => {
 
     envelope.classList.add("hidden");
     question.classList.remove("hidden");
 
 });
 
-const phrases = [
+function noClicked() {
 
-"Qyqy ec more 😂",
+    count++;
 
-"Jaaa ja kajte nanen 😭",
-
-"Mos ja tepro qitash 😭😅",
-
-"Eee qitash ski qare 😂"
-];
-function changeNo(){
-
-    if(count < 4){
-
-message.innerText = phrases[count];
-
-        count++;
-
-        if(count === 4){
-
-            no1.style.display = "none";
-            no2.style.display = "none";
-
-            yes.innerText = "❤️ IK NESE MUNESH QITASH ❤️";
-            yes.style.fontSize = "24px";
-            yes.style.padding = "20px 40px";
-
-        }
-
+    if (count < texts.length) {
+        message.innerText = texts[count];
     }
 
+    if (count >= 4) {
 
+        no1.style.display = "none";
+        no2.style.display = "none";
 
-} 
-no1.addEventListener("click", () => {
-    changeNo();
-});
+        yes.style.display = "inline-block";
+            }
 
-no2.addEventListener("click", () => {
+}
 
-    changeNo();
-
-});
+no1.addEventListener("click", noClicked);
+no2.addEventListener("click", noClicked);
 
 yes.addEventListener("click", () => {
 
     question.classList.add("hidden");
+    loveScreen.classList.remove("hidden");
 
-    document.getElementById("loveScreen").classList.remove("hidden");
+    createHearts();
+
+    setTimeout(() => {
+
+        loveScreen.classList.add("hidden");
+        finalScreen.classList.remove("hidden");
+
+        const texts = document.querySelectorAll(".finalText");
+
+        texts.forEach((text, index) => {
+
+            setTimeout(() => {
+
+                text.classList.add("show");
+
+            }, index * 1800);
+
+        });
+
+    }, 9000);
 
 });
 
-function createHeart() {
-    const heart = document.createElement("div");
+function createHearts() {
 
-    heart.innerHTML = "❤️";
-    heart.style.position = "fixed";
-    heart.style.left = Math.random() * window.innerWidth + "px";
-    heart.style.top = "-30px";
-    heart.style.fontSize = (20 + Math.random() * 20) + "px";
-    heart.style.pointerEvents = "none";
-    heart.style.zIndex = "999";
+    const container = document.getElementById("hearts");
 
-    document.body.appendChild(heart);
+    setInterval(() => {
 
-    let y = -30;
+        const heart = document.createElement("div");
 
-    const fall = setInterval(() => {
-        y += 5;
-        heart.style.top = y + "px";
+        heart.innerHTML = "❤️";
 
-        if (y > window.innerHeight) {
-            clearInterval(fall);
-            heart.remove();
-        }
-    }, 30);
-}
+        heart.classList.add("heart");
 
-setInterval(createHeart, 300);
-setTimeout(() => {
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.fontSize = (20 + Math.random() * 30) + "px";
+        heart.style.animationDuration = (3 + Math.random() * 3) + "s";
 
-    document.getElementById("loveScreen").classList.add("hidden");
+        container.appendChild(heart);
 
-    document.getElementById("finalScreen").classList.remove("hidden"); showFinalTexts();
-
-}, 8000);
-const finalTexts = document.querySelectorAll(".finalText");
-
-function showFinalTexts() {
-    finalTexts.forEach((text, index) => {
         setTimeout(() => {
-            text.classList.add("show");
-        }, index * 2500);
-    });
+
+            heart.remove();
+
+        }, 6000);
+
+    }, 250);
+
 }
