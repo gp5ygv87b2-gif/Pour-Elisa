@@ -33,7 +33,7 @@ const phrases = [
 "Mos ja tepro qitash 😭😅",
 
 "Eee qitash ski qare 😂"
-
+];
 function changeNo(){
 
     if(count < 4){
