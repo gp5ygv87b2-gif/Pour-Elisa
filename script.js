@@ -58,7 +58,8 @@ function changeNo(){
 
 
 
-} no1.addEventListener("click", () => {
+} 
+no1.addEventListener("click", () => {
     changeNo();
 });
 
