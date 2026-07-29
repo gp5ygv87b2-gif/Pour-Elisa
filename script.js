@@ -51,7 +51,6 @@ function noClick() {
 
 no1.addEventListener("click", noClick);
 no2.addEventListener("click", noClick);
-
 yes.addEventListener("click", () => {
 
     question.classList.add("hidden");
@@ -80,7 +79,7 @@ yes.addEventListener("click", () => {
 
             finalScreen.classList.add("hidden");
 
-            if(dateFinal){
+            if (dateFinal) {
                 dateFinal.classList.remove("hidden");
             }
 
@@ -94,7 +93,7 @@ function createHearts() {
 
     const hearts = document.getElementById("hearts");
 
-    if(!hearts) return;
+    if (!hearts) return;
 
     setInterval(() => {
 
@@ -116,20 +115,25 @@ function createHearts() {
     }, 250);
 
 }
-
 const confirmDate = document.getElementById("confirmDate");
 const dateInput = document.getElementById("dateInput");
 
-if(confirmDate){
+if (confirmDate) {
 
     confirmDate.addEventListener("click", () => {
 
-        if(dateInput.value === ""){
+        if (dateInput.value === "") {
             alert("Choisis une date ❤️");
             return;
         }
 
-        alert("J'ai trop hâte de notre date le " + dateInput.value + " ❤️🥹");
+        const date = new Date(dateInput.value);
+
+        const jour = date.getDate().toString().padStart(2, "0");
+        const mois = (date.getMonth() + 1).toString().padStart(2, "0");
+        const annee = date.getFullYear();
+
+        alert(`J'ai trop hâte de notre date le ${jour}/${mois}/${annee} ❤️🥹`);
 
     });
 
