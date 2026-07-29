@@ -1,3 +1,4 @@
+alert("Le script fonctionne");
 const intro = document.getElementById("intro");
 const envelope = document.getElementById("envelope");
 const question = document.getElementById("question");
