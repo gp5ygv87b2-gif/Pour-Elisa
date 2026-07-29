@@ -6,7 +6,7 @@ const openLetter = document.getElementById("openLetter");
 
 const no1 = document.getElementById("no1");
 const no2 = document.getElementById("no2");
-const yes = document.getElementById("yes");
+constconst message = document.getElementById("message");
 
 let count = 0;
 
@@ -38,8 +38,7 @@ function changeNo(){
 
     if(count < 4){
 
-        no1.innerText = phrases[count];
-        no2.innerText = phrases[count];
+message.innerText = phrases[count];
 
         count++;
 
