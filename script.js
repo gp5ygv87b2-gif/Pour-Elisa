@@ -3,6 +3,7 @@ const envelope = document.getElementById("envelope");
 const question = document.getElementById("question");
 const loveScreen = document.getElementById("loveScreen");
 const finalScreen = document.getElementById("finalScreen");
+const dateFinal = document.getElementById("dateFinal");
 
 const openLetter = document.getElementById("openLetter");
 
@@ -32,71 +33,104 @@ openLetter.addEventListener("click", () => {
     question.classList.remove("hidden");
 });
 
-function noClick(){
+function noClick() {
 
     clicks++;
 
-    if(clicks < phrases.length){
+    if (clicks < phrases.length) {
         message.textContent = phrases[clicks];
     }
 
-    if(clicks >= 4){
-
+    if (clicks >= 4) {
         no1.style.display = "none";
         no2.style.display = "none";
-
         yes.style.display = "inline-block";
     }
 
 }
-const intro = document.getElementById("intro");
-const envelope = document.getElementById("envelope");
-const question = document.getElementById("question");
-const loveScreen = document.getElementById("loveScreen");
-const finalScreen = document.getElementById("finalScreen");
 
-const openLetter = document.getElementById("openLetter");
+no1.addEventListener("click", noClick);
+no2.addEventListener("click", noClick);
 
-const yes = document.getElementById("yes");
-const no1 = document.getElementById("no1");
-const no2 = document.getElementById("no2");
+yes.addEventListener("click", () => {
 
-const message = document.getElementById("message");
+    question.classList.add("hidden");
+    loveScreen.classList.remove("hidden");
 
-const phrases = [
-    "(Mos provo me thonë jo 😏)",
-    "Qyqy ec more 😂",
-    "Jaaa ja kajte nanen 😭",
-    "Mos ja tepro qitash 😭😅",
-    "Eee qitash ski qare 😂"
-];
+    createHearts();
 
-let clicks = 0;
+    setTimeout(() => {
 
-setTimeout(() => {
-    intro.classList.add("hidden");
-    envelope.classList.remove("hidden");
-}, 2500);
+        loveScreen.classList.add("hidden");
+        finalScreen.classList.remove("hidden");
 
-openLetter.addEventListener("click", () => {
-    envelope.classList.add("hidden");
-    question.classList.remove("hidden");
+        const texts = document.querySelectorAll(".finalText");
+
+        texts.forEach((text, index) => {
+
+            setTimeout(() => {
+
+                text.classList.add("show");
+
+            }, index * 1800);
+
+        });
+
+        setTimeout(() => {
+
+            finalScreen.classList.add("hidden");
+
+            if(dateFinal){
+                dateFinal.classList.remove("hidden");
+            }
+
+        }, texts.length * 1800 + 3000);
+
+    }, 9000);
+
 });
 
-function noClick(){
+function createHearts() {
 
-    clicks++;
+    const hearts = document.getElementById("hearts");
 
-    if(clicks < phrases.length){
-        message.textContent = phrases[clicks];
-    }
+    if(!hearts) return;
 
-    if(clicks >= 4){
+    setInterval(() => {
 
-        no1.style.display = "none";
-        no2.style.display = "none";
+        const heart = document.createElement("div");
 
-        yes.style.display = "inline-block";
-    }
+        heart.className = "heart";
+        heart.innerHTML = "❤️";
+
+        heart.style.left = Math.random() * 100 + "%";
+        heart.style.fontSize = (20 + Math.random() * 25) + "px";
+        heart.style.animationDuration = (3 + Math.random() * 3) + "s";
+
+        hearts.appendChild(heart);
+
+        setTimeout(() => {
+            heart.remove();
+        }, 6000);
+
+    }, 250);
+
+}
+
+const confirmDate = document.getElementById("confirmDate");
+const dateInput = document.getElementById("dateInput");
+
+if(confirmDate){
+
+    confirmDate.addEventListener("click", () => {
+
+        if(dateInput.value === ""){
+            alert("Choisis une date ❤️");
+            return;
+        }
+
+        alert("J'ai trop hâte de notre date le " + dateInput.value + " ❤️🥹");
+
+    });
 
 }
