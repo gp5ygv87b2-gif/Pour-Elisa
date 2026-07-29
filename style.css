@@ -1,0 +1,147 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    overflow: hidden;
+    background: linear-gradient(135deg, #ffe6ef, #fff0f6);
+}
+
+.screen {
+    width: 100vw;
+    height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+    padding: 20px;
+
+    position: relative;
+}
+
+.hidden {
+    display: none;
+}
+
+/* Intro */
+
+#intro {
+    background: black;
+    color: white;
+}
+
+#intro h1 {
+    font-size: 42px;
+}
+
+/* Enveloppe */
+
+.letter {
+    background: white;
+    padding: 35px;
+    border-radius: 20px;
+    box-shadow: 0 15px 40px rgba(0,0,0,.2);
+}
+
+.letter h2 {
+    margin-bottom: 15px;
+}
+
+.letter p {
+    margin-bottom: 20px;
+}
+
+/* Boutons */
+
+button {
+    border: none;
+    border-radius: 12px;
+    padding: 14px 28px;
+    margin: 10px;
+    cursor: pointer;
+    font-size: 18px;
+    transition: .25s;
+}
+
+button:hover {
+    transform: scale(1.08);
+}
+
+#yes {
+    background: #ff3f7f;
+    color: white;
+}
+
+#no1,
+#no2 {
+    background: #ddd;
+}
+
+/* Love */
+
+#loveScreen {
+    background: linear-gradient(#ffd4e7, white);
+}
+
+#loveScreen h1 {
+    font-size: 52px;
+    color: #ff2c70;
+}
+
+#loveScreen p {
+    font-size: 24px;
+    margin: 15px;
+}
+
+#naya {
+    width: 230px;
+    border-radius: 20px;
+    margin: 20px;
+    box-shadow: 0 10px 25px rgba(0,0,0,.2);
+}
+
+#bubble {
+    background: white;
+    padding: 18px;
+    border-radius: 20px;
+    max-width: 380px;
+    box-shadow: 0 5px 15px rgba(0,0,0,.15);
+}
+
+/* Messages finaux */
+
+.finalText {
+    display: none;
+    margin: 18px;
+    font-size: 28px;
+    color: #d6336c;
+}
+
+/* Pluie de cœurs */
+
+#hearts {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+@keyframes fall {
+
+    from {
+        transform: translateY(-40px);
+        opacity: 1;
+    }
+
+    to {
+        transform: translateY(110vh);
+        opacity: 0;
+    }
+
+}
