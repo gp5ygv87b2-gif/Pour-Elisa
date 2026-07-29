@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Pour Elisa ❤️</title>
+<style>
+body{
+font-family:Arial;
+background:#fff5f7;
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
+margin:0;
+}
+
+.box{
+background:white;
+padding:30px;
+border-radius:15px;
+text-align:center;
+box-shadow:0 0 20px rgba(0,0,0,.15);
+}
+
+button{
+padding:12px 25px;
+margin:10px;
+font-size:18px;
+cursor:pointer;
+border:none;
+border-radius:10px;
+}
+
+#oui{
+background:#c73b63;
+color:white;
+}
+
+#non{
+background:white;
+border:2px solid #ccc;
+position:relative;
+}
+</style>
+</head>
+
+<body>
+
+<div class="box">
+
+<h3>POUR TOI ELISA ❤️</h3>
+
+<h1>A m'don ?</h1>
+
+<p>(Dire non ne sert à rien 😏)</p>
+
+<button id="non">Non</button>
+<button id="oui">Oui</button>
+
+</div>
+
+<script>
+
+const non=document.getElementById("non");
+
+non.onmouseover=function(){
+non.style.position="fixed";
+non.style.left=Math.random()*(window.innerWidth-100)+"px";
+non.style.top=Math.random()*(window.innerHeight-50)+"px";
+}
+
+document.getElementById("oui").onclick=function(){
+document.body.innerHTML="<h1 style='font-family:Arial;text-align:center;margin-top:150px;'>❤️ Merci Elisa ❤️<br><br>Blendi est trop heureux 🥹</h1>";
+}
+
+</script>
+
+</body>
+</html>
